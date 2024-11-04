@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "936075700566",
+    "firebase_url": "https://planit-4944e-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "planit-4944e",
+    "storage_bucket": "planit-4944e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936075700566:android:460cde4501a75e446b4ef7",
+        "android_client_info": {
+          "package_name": "com.mejorescolegios.planit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936075700566-ghmb2u2qoal0oe37ij1rcg5vfthnmvpn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBILr6mhj6fBbCmyMSFJ3GpPCnE3Whewi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936075700566-ghmb2u2qoal0oe37ij1rcg5vfthnmvpn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

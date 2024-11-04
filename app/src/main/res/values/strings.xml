@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">PlanIt</string>
+    <string name="app_subtitle" translatable="false">Your Tasks, simplified</string>
+    <string name="email_and_password">Email and password</string>
+    <string name="not_yet_registered_sign_up">Not yet registered? Sign Up</string>
+    <string name="Google">Sign in with Google</string>
+    <string name="login">Log in</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password">Password</string>
+    <string name="login_successful">Login successful</string>
+    <string name="password_cannot_be_empty">Password cannot be empty</string>
+    <string name="email_cannot_be_empty">Email cannot be empty</string>
+    <string name="please_enter_a_valid_email">Please enter a valid email</string>
+    <string name="sign_up">Sign up</string>
+    <string name="full_name">Full name\t</string>
+    <string name="name_cannot_be_empty">Name cannot be empty</string>
+    <string name="signup_successful">Sign up successful</string>
+    <string name="signup_failed">Sign up failed</string>
+
+
+
+</resources>
