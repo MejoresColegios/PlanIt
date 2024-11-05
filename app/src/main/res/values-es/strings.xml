@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email_and_password">Email y contraseña</string>
+    <string name="not_yet_registered_sign_up">¿No estás registrado? Pulsa aquí</string>
+    <string name="Google">Accede con Google</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="password">Contraseña</string>
+    <string name="login_successful">Sesión iniciada</string>
+    <string name="password_cannot_be_empty">La contraseña no puede estar vacía</string>
+    <string name="email_cannot_be_empty">El email no puede estar vacío</string>
+    <string name="please_enter_a_valid_email">Por favor, introduce un email valido</string>
+    <string name="sign_up">Registro</string>
+    <string name="full_name">Nombre y apellidos</string>
+    <string name="name_cannot_be_empty">Introduce nombre y apellidos</string>
+    <string name="signup_successful">Registro correcto</string>
+    <string name="signup_failed">Error de registro</string>
+    <string name="days_remaining">Días restantes:</string>
+    <string name="about">Acerca de...</string>
+    <string name="text_logout">Sesión cerrada</string>
+    <string name="it_new">Nueva tarea</string>
+    <string name="it_prioritary">Prioritaria</string>
+    <string name="it_logout">Cerrar sesión</string>
+    <string name="desc_it_new">Crear nueva tarea</string>
+    <string name="desc_it_prioritary">Filtrar prioritarias</string>
+    <string name="exit">Salir</string>
+    <string name="title">Título</string>
+    <string name="due_date">"Vencimiento: "</string>
+    <string name="progress">"Progreso: "</string>
+    <string name="description_detail">Describe con detalle la tarea</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Guardar</string>
+    <string name="task_saved_successfully">¡Tarea guardada correctamente!</string>
+    <string name="failed_to_add_task_to_database">Error al guardar la tarea</string>
+    <string name="title_cannot_be_empty">Inserta un título</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Borrar</string>
+    <string name="text_error">Error al leer la base de datos</string>
+    <string name="date_cannot_be_empty">Inserta una fecha</string>
+    <string name="description_cannot_be_empty">Inserta una descripción</string>
+    <string name="due_date_cannot_be_empty">Inserta una fecha</string>
+    <string name="user_error">No hay usuario activo</string>
+    <string name="deleted_task">Tarea aliminada</string>
+    <string name="error_deleting_task">Error al eliminar la tarea</string>
+    <string name="invalid_task">Tarea no válida</string>
+</resources>

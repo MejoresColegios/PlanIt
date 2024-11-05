@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/taskListMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ic_launcher_background"
@@ -13,17 +13,18 @@
     <ImageView
         android:id="@+id/ivLogoLogin"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:srcCompat="@mipmap/ic_launcher_foreground" />
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/tvLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/login"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="40sp"
         tools:text="@string/login" />
 
@@ -75,6 +76,7 @@
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/my_light_primary"
                 android:text="@string/login"
+                android:textColor="@color/green"
                 android:textSize="18sp"
                 app:cornerRadius="20dp"
                 tools:ignore="DuplicateSpeakableTextCheck,VisualLintButtonSize,TextContrastCheck" />

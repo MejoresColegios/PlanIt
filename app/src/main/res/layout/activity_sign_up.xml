@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/taskListMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ic_launcher_background"
@@ -13,18 +13,19 @@
     <ImageView
         android:id="@+id/ivLogoSignUp"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:srcCompat="@mipmap/ic_launcher_foreground"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/logo"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/sign_up"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="40sp"
         tools:text="@string/sign_up" />
 
@@ -91,7 +92,7 @@
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/my_light_primary"
                 android:text="@string/sign_up"
-                android:textColor="#43A047"
+                android:textColor="@color/green"
                 android:textSize="18sp"
                 app:cornerRadius="20dp"
                 tools:ignore="DuplicateSpeakableTextCheck,HardcodedText,VisualLintButtonSize" />

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PlanIt</string>
+    <string name="app_name" translatable="false">PlanIt</string>
     <string name="app_subtitle" translatable="false">Your Tasks, simplified</string>
     <string name="email_and_password">Email and password</string>
     <string name="not_yet_registered_sign_up">Not yet registered? Sign Up</string>
@@ -16,7 +16,33 @@
     <string name="name_cannot_be_empty">Name cannot be empty</string>
     <string name="signup_successful">Sign up successful</string>
     <string name="signup_failed">Sign up failed</string>
-
-
-
+    <string name="days_remaining">Days remaining:</string>
+    <string name="about">About...</string>
+    <string name="text_ok" translatable="false">OK</string>
+    <string name="text_logout">Log out successful</string>
+    <string name="it_new">New task</string>
+    <string name="it_prioritary">Prioritary</string>
+    <string name="it_logout">Log out</string>
+    <string name="desc_it_new">Create new task</string>
+    <string name="desc_it_prioritary">Filter priority</string>
+    <string name="exit">Exit</string>
+    <string name="title">Title</string>
+    <string name="due_date">Due date</string>
+    <string name="progress">Progress</string>
+    <string name="description_detail">Describe the task in detail</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="task_saved_successfully">Task saved successfully!</string>
+    <string name="failed_to_add_task_to_database">Failed to add task to database</string>
+    <string name="title_cannot_be_empty">Title cannot be empty</string>
+    <string name="due_date_cannot_be_empty">Date cannot be empty</string>
+    <string name="description_cannot_be_empty">Description cannot be empty</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="text_error">Error al leer la base de datos</string>
+    <string name="date_cannot_be_empty">Date cannot be empty</string>
+    <string name="user_error">No logged in user</string>
+    <string name="deleted_task">Task deleted</string>
+    <string name="error_deleting_task">Error deleting task</string>
+    <string name="invalid_task">Invalid task</string>
 </resources>

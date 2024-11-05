@@ -13,6 +13,12 @@
         android:theme="@style/Theme.PlanIt"
         tools:targetApi="31">
         <activity
+            android:name=".view.EditTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.NewTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.TaskListActivity"
             android:exported="false" />
         <activity
