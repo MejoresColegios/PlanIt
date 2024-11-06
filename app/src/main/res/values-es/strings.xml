@@ -42,4 +42,5 @@
     <string name="deleted_task">Tarea aliminada</string>
     <string name="error_deleting_task">Error al eliminar la tarea</string>
     <string name="invalid_task">Tarea no válida</string>
+    <string name="edit_task">Editar tarea</string>
 </resources>

@@ -45,4 +45,5 @@
     <string name="deleted_task">Task deleted</string>
     <string name="error_deleting_task">Error deleting task</string>
     <string name="invalid_task">Invalid task</string>
+    <string name="edit_task">Edit task</string>
 </resources>

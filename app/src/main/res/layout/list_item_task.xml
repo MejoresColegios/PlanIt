@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/ivStar"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <ProgressBar
         android:id="@+id/pbTask"
@@ -39,7 +40,8 @@
         android:layout_marginTop="16dp"
         android:text="dd/mm/aaaa"
         app:layout_constraintStart_toEndOf="@+id/pbTask"
-        app:layout_constraintTop_toBottomOf="@+id/tvTaskTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTaskTitle"
+        tools:ignore="HardcodedText,TextSizeCheck" />
 
     <TextView
         android:id="@+id/tvRemaining"
@@ -49,7 +51,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/days_remaining"
         app:layout_constraintStart_toEndOf="@+id/tvDate"
-        app:layout_constraintTop_toBottomOf="@+id/tvTaskTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTaskTitle"
+        tools:ignore="TextSizeCheck" />
 
     <TextView
         android:id="@+id/tvDays"
@@ -59,7 +62,8 @@
         android:layout_marginTop="16dp"
         android:text="00"
         app:layout_constraintStart_toEndOf="@+id/tvRemaining"
-        app:layout_constraintTop_toBottomOf="@+id/tvTaskTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTaskTitle"
+        tools:ignore="HardcodedText,TextSizeCheck" />
 
     <ImageView
         android:id="@+id/ivStar"

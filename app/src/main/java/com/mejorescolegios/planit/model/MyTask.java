@@ -1,13 +1,16 @@
 package com.mejorescolegios.planit.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MyTask {
+public class MyTask implements Parcelable {
 
     // Atributos
     private String Title;
-    private Object creationDate;
+    private Long creationDate;
     private Long dueDate;
     private Integer progress;
     private Boolean priority;
@@ -19,7 +22,7 @@ public class MyTask {
     public MyTask() {
     }
 
-    // Constructor con argumentos
+    // Constructor
     public MyTask(String title, Long dueDate, Integer progress, Boolean priority, String description, String uidUser) {
         Title = title;
         this.creationDate = System.currentTimeMillis();
@@ -44,7 +47,7 @@ public class MyTask {
         return creationDate;
     }
 
-    public void setCreationDate(Object creationDate) {
+    public void setCreationDate(Long creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -96,11 +99,11 @@ public class MyTask {
         this.id = id;
     }
 
-    // Método para calcular los días desde la fecha actual hasta la due date y devuelve un string con el resultado
-    public String calculateDays() {
-        Long currentTime = System.currentTimeMillis();
-        Long days = (this.dueDate - currentTime) / (1000 * 60 * 60 * 24);
-        return days.toString();
+    // Método para calcular los días desde la fecha actual hasta la due date y devuelve el resultado
+    public int calculateDays() {
+        long currentTime = System.currentTimeMillis();
+        long diff = this.dueDate - currentTime;
+        return (int) (diff / (1000 * 60 * 60 * 24));
     }
 
     // Método que convierte dueDate a un String con formato dd/MM/yyyy
@@ -111,4 +114,43 @@ public class MyTask {
     }
 
 
+    // Métodos de la interfaz Parcelable
+    protected MyTask(Parcel in) {
+        Title = in.readString();
+        creationDate = in.readLong();
+        dueDate = in.readLong();
+        progress = in.readInt();
+        byte tmpPriority = in.readByte();
+        priority = tmpPriority == 0 ? null : tmpPriority == 1;
+        description = in.readString();
+        uidUser = in.readString();
+        id = in.readString();
+    }
+
+    public static final Creator<MyTask> CREATOR = new Creator<MyTask>() {
+        @Override
+        public MyTask createFromParcel(Parcel in) {
+            return new MyTask(in);
+        }
+
+        @Override
+        public MyTask[] newArray(int size) {
+            return new MyTask[size];
+        }
+    };
+
+    @Override
+    public int describeContents() { return 0; }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(Title);
+        dest.writeLong((Long) creationDate);
+        dest.writeLong(dueDate);
+        dest.writeInt(progress);
+        dest.writeByte((byte) (priority == null ? 0 : priority ? 1 : 2));
+        dest.writeString(description);
+        dest.writeString(uidUser);
+        dest.writeString(id);
+    }
 }

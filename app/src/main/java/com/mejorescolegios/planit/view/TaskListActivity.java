@@ -37,6 +37,8 @@ public class TaskListActivity extends AppCompatActivity {
     private RecyclerView rvTasks;
     private MyTaskAdapter adapter;
     private String uidUser;
+    private MenuItem menuItemPrioritary;
+    private boolean boolprioritary = false;
 
     private FirebaseDatabase database;
     private FirebaseAuth auth;
@@ -97,7 +99,10 @@ public class TaskListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
-        return true;
+        menuItemPrioritary = menu.findItem(R.id.it_prioritary);
+        // Coloco el icono adecuado
+        iconoPrioritarias();
+        return super.onCreateOptionsMenu(menu);
     }
 
     // Le doy funcionalidad al menú
@@ -108,7 +113,57 @@ public class TaskListActivity extends AppCompatActivity {
             Intent intent = new Intent(TaskListActivity.this, NewTaskActivity.class);
             startActivity(intent);
         } else if (R.id.it_prioritary == item.getItemId()) {
-            //TODO : FILTRAR TAREAS PRIORITARIAS
+            // Al pulsar el botón de menú "Prioritarias", se muestran solo las tareas prioritarias
+            //Conmutamos el valor booleando
+            boolprioritary = !boolprioritary;
+            //Colocamos el icono adecuado
+            iconoPrioritarias();
+            adapter.setBoolPrioritary(boolprioritary);
+            // si es true, solo se muestran las tareas prioritarias
+            if (boolprioritary) {
+                myTasksRef.orderByChild("uidUser").equalTo(uidUser).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        myTasks.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            MyTask myTask = dataSnapshot.getValue(MyTask.class);
+                            if (myTask != null && myTask.getPriority()) {
+                                myTask.setId(dataSnapshot.getKey());
+                                myTasks.add(myTask);
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(TaskListActivity.this, getResources().getString(R.string.text_error), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                // si es false, se muestran todas las tareas
+                myTasksRef.orderByChild("uidUser").equalTo(uidUser).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        myTasks.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            MyTask myTask = dataSnapshot.getValue(MyTask.class);
+                            if (myTask != null) {
+                                myTask.setId(dataSnapshot.getKey());
+                                myTasks.add(myTask);
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(TaskListActivity.this, getResources().getString(R.string.text_error), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            adapter.notifyDataSetChanged();
 
         } else if (R.id.it_about == item.getItemId()) {
             ImageView imageView = new ImageView(this);
@@ -157,13 +212,9 @@ public class TaskListActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         if (itemId == R.id.cmEdit) {
             // Editar el contacto seleccionado en EditContactActivity
-            //Intent intent = new Intent(TaskListActivity.this, EditTaskActivity.class);
-            //intent.putExtra("myTask", adapter.getSelectedMyTask());
-            //startActivity(intent);
-
-
-
-
+            Intent intent = new Intent(TaskListActivity.this, EditTaskActivity.class);
+            intent.putExtra("myTask", adapter.getSelectedMyTask());
+            startActivity(intent);
 
         } else if (itemId == R.id.cmDelete) {
             // Eliminar el contacto seleccionado de la base de datos
@@ -182,5 +233,15 @@ public class TaskListActivity extends AppCompatActivity {
 
         }
         return super.onContextItemSelected(item);
+    }
+
+    //Método para cambiar el icono de acción para mostrar todas las tareas o solo prioritarias
+    private void iconoPrioritarias(){
+        if(boolprioritary)
+            //Ponemos en la barra de herramientas el icono PRIORITARIAS
+            menuItemPrioritary.setIcon(android.R.drawable.btn_star_big_on);
+        else
+            //Ponemos en la barra de herramientas el icono NO PRIORITARIAS
+            menuItemPrioritary.setIcon(android.R.drawable.btn_star_big_off);
     }
 }
