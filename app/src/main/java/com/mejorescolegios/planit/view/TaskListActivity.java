@@ -3,6 +3,7 @@ package com.mejorescolegios.planit.view;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuInflater;
 
@@ -158,7 +159,7 @@ public class TaskListActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(TaskListActivity.this, getResources().getString(R.string.text_error), Toast.LENGTH_SHORT).show();
+                        Log.e("ERROR", error.getMessage());
                     }
                 });
             }

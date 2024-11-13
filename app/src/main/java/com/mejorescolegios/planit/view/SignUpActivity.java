@@ -45,6 +45,8 @@ public class SignUpActivity extends AppCompatActivity {
             if (isSuccess) {
                 Toast.makeText(SignUpActivity.this, getString(R.string.signup_successful), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                // quitar la actividad signup de la pila
+                finish();
             } else {
                 Toast.makeText(SignUpActivity.this, getString(R.string.signup_failed), Toast.LENGTH_SHORT).show();
             }

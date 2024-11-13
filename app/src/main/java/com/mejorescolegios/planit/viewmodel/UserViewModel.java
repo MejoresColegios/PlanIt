@@ -56,12 +56,12 @@ public class UserViewModel extends ViewModel {
     }
 
     // Método para guardar al usuario en Realtime Database
-    private void saveUserToDatabase(String fullName, String email, FirebaseUser user) {
+    public void saveUserToDatabase(String fullName, String email, FirebaseUser user) {
         String uid = user.getUid();
         User newUser = new User(fullName, email, uid);
 
-        // Utilizar push() para generar un ID aleatorio
-        databaseReference.push().setValue(newUser).addOnCompleteListener(task -> {
+        // Guardar el usuario en la base de datos con id = uid
+        databaseReference.child(uid).setValue(newUser).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Log.d("UserViewModel", "User added successfully to database with random ID");
                 registrationStatus.setValue(true);
@@ -71,6 +71,22 @@ public class UserViewModel extends ViewModel {
             }
         });
     }
+
+    // Método para comprobar si el usuario ya existe en Realtime Database
+    public void checkUserExists(String uid, OnUserExistenceCheckListener listener) {
+        databaseReference.child(uid).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult().exists()) {
+                listener.onUserExists(true);
+            } else {
+                listener.onUserExists(false);
+            }
+        });
+    }
+    // Interfaz para el listener de comprobación de existencia de usuario
+    public interface OnUserExistenceCheckListener {
+        void onUserExists(boolean exists);
+    }
+
 }
 
 
