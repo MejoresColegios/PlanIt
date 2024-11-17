@@ -34,7 +34,6 @@
     <string name="title_cannot_be_empty">Inserta un título</string>
     <string name="edit">Editar</string>
     <string name="delete">Borrar</string>
-    <string name="text_error">Error al leer la base de datos</string>
     <string name="date_cannot_be_empty">Inserta una fecha</string>
     <string name="description_cannot_be_empty">Inserta una descripción</string>
     <string name="due_date_cannot_be_empty">Inserta una fecha</string>
@@ -43,4 +42,10 @@
     <string name="error_deleting_task">Error al eliminar la tarea</string>
     <string name="invalid_task">Tarea no válida</string>
     <string name="edit_task">Editar tarea</string>
+    <string name="desc_it_completed">Filtrar por tareas completadas</string>
+    <string name="confirm_logout">¿Confirmas que quieres cerrar sesión?</string>
+    <string name="text_yes">Si</string>
+    <string name="text_no">No</string>
+    <string name="confirm_exit">¿Estás preparado para salir de la app?</string>
+    <string name="it_completed">Tarea completada</string>
 </resources>

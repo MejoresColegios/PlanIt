@@ -14,6 +14,8 @@
         android:layout_marginTop="32dp"
         android:text="@string/it_new"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,6 +32,7 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textColorHint="#757575"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_newTask"
@@ -45,6 +48,7 @@
         android:inputType="date"
         android:minHeight="48dp"
         android:textAlignment="center"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewTitle"
         tools:ignore="Autofill,SpeakableTextPresentCheck" />
@@ -57,7 +61,7 @@
         android:layout_marginTop="18dp"
         android:text="@string/due_date"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="20sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toStartOf="@+id/etNewDueDate"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,14 +75,14 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
         android:text="@string/progress"
-        android:textSize="20sp"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewDueDate" />
 
     <SeekBar
         android:id="@+id/sbNewProgress"
         android:layout_width="180dp"
-        android:layout_height="25dp"
+        android:layout_height="28dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="50dp"
         android:max="100"
@@ -94,7 +98,7 @@
         android:layout_marginTop="8dp"
         android:minHeight="48dp"
         android:text="@string/it_prioritary"
-        android:textSize="20sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNewProgress"
@@ -114,6 +118,7 @@
         android:inputType="textMultiLine"
         android:lines="15"
         android:textColorHint="#616161"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switchNewPrioritary" />
@@ -125,8 +130,10 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/my_light_primary"
+        android:padding="20dp"
         android:text="@string/cancel"
         android:textColor="@color/green"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewDescription" />
 
@@ -137,8 +144,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="@color/my_light_primary"
+        android:padding="20dp"
         android:text="@string/save"
         android:textColor="@color/green"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewDescription" />
 

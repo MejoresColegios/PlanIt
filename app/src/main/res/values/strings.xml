@@ -39,12 +39,17 @@
     <string name="description_cannot_be_empty">Description cannot be empty</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
-    <string name="text_error">Error al leer la base de datos</string>
     <string name="date_cannot_be_empty">Date cannot be empty</string>
     <string name="user_error">No logged in user</string>
     <string name="deleted_task">Task deleted</string>
     <string name="error_deleting_task">Error deleting task</string>
     <string name="invalid_task">Invalid task</string>
     <string name="edit_task">Edit task</string>
-    <string name="default_web_client_id">936075700566-ghmb2u2qoal0oe37ij1rcg5vfthnmvpn.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">936075700566-ghmb2u2qoal0oe37ij1rcg5vfthnmvpn.apps.googleusercontent.com</string>
+    <string name="it_completed">Completed task</string>
+    <string name="desc_it_completed">Filter completed tasks</string>
+    <string name="confirm_logout">Do you really want to log out?</string>
+    <string name="text_yes">Yes</string>
+    <string name="text_no">No</string>
+    <string name="confirm_exit">Do you really want to quit?</string>
 </resources>

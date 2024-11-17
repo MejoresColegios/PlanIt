@@ -171,10 +171,6 @@ public class EditTaskActivity extends AppCompatActivity {
             etNewTitle.setError(getString(R.string.title_cannot_be_empty));
             isValid = false;
         }
-        if (description.isEmpty()) {
-            etNewDescription.setError(getString(R.string.description_cannot_be_empty));
-            isValid = false;
-        }
         if (dueDate == null) {
             etNewDueDate.setError(getString(R.string.due_date_cannot_be_empty));
             isValid = false;

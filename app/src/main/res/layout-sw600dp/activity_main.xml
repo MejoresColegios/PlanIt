@@ -12,9 +12,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="90dp"
         app:srcCompat="@drawable/logo" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="80sp"
+        android:textSize="120sp"
         tools:text="@string/app_name" />
 
     <TextView
@@ -36,7 +36,7 @@
         android:text="@string/app_subtitle"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="52sp"
         tools:text="@string/app_subtitle" />
 
     <androidx.cardview.widget.CardView
@@ -54,8 +54,8 @@
             android:padding="24dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="24dp"
@@ -63,8 +63,8 @@
 
                 <ImageButton
                     android:id="@+id/ibMail"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_weight="0"
                     android:background="@color/my_light_primary"
                     android:contentDescription="@string/email_and_password"
@@ -73,12 +73,13 @@
 
                 <TextView
                     android:id="@+id/tvMail"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:text="@string/email_and_password"
                     android:textColor="@color/white"
+                    android:textSize="34sp"
                     android:textStyle="bold"
                     tools:text="@string/email_and_password" />
 
@@ -94,8 +95,8 @@
 
                 <ImageButton
                     android:id="@+id/ibSignInWithGoogle"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_weight="0"
                     android:background="@drawable/googleg_standard_color_18"
                     android:contentDescription="@string/Google"
@@ -109,7 +110,7 @@
                     android:layout_weight="1"
                     android:text="@string/Google"
                     android:textColor="@color/white"
-                    android:textSize="14sp"
+                    android:textSize="34sp"
                     android:textStyle="bold"
                     tools:text="@string/Google" />
 
@@ -124,7 +125,7 @@
                 android:padding="8dp"
                 android:text="@string/not_yet_registered_sign_up"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="28sp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -26,6 +26,9 @@ public class MyTaskAdapter extends RecyclerView.Adapter<MyTaskAdapter.MyTaskView
     private boolean boolPioritary;
     public void setBoolPrioritary(boolean boolPioritary) { this.boolPioritary = boolPioritary; }
 
+    private boolean boolCompleted;
+    public void setBoolCompleted(boolean boolCompleted) { this.boolCompleted = boolCompleted; }
+
     public MyTaskAdapter(Context context, List<MyTask> myTasks) {
         this.context = context;
         this.myTasks = myTasks;
@@ -49,15 +52,17 @@ public class MyTaskAdapter extends RecyclerView.Adapter<MyTaskAdapter.MyTaskView
         }
         holder.tvTaskTitle.setText(myTask.getTitle());
         holder.pbTask.setProgress(myTask.getProgress());
+        // si el progreso es 100, tachar el título
+        if (myTask.getProgress() == 100) {
+            holder.tvTaskTitle.setPaintFlags(holder.tvTaskTitle.getPaintFlags() | android.graphics.Paint.STRIKE_THRU_TEXT_FLAG);
+        } else {
+            holder.tvTaskTitle.setPaintFlags(holder.tvTaskTitle.getPaintFlags() & ~android.graphics.Paint.STRIKE_THRU_TEXT_FLAG);
+        }
+
         holder.tvDate.setText(myTask.getDueDateString());
+        holder.tvDescription.setText(myTask.getDescription());
         int daysLeft = myTask.calculateDays();
         holder.tvDays.setText(String.valueOf(daysLeft)); // Convertimos el int a String
-        // Si el número de días es menor que 0, cambiar el color a rojo
-        if (daysLeft < 0) {
-            holder.tvDays.setTextColor(context.getResources().getColor(R.color.red));
-        } else {
-            holder.tvDays.setTextColor(context.getResources().getColor(R.color.black));
-        }
     }
 
     @Override
@@ -68,7 +73,7 @@ public class MyTaskAdapter extends RecyclerView.Adapter<MyTaskAdapter.MyTaskView
     // Clase interna para el ViewHolder
     public class MyTaskViewHolder extends RecyclerView.ViewHolder {
         ImageView ivStar;
-        TextView tvTaskTitle, tvDate, tvDays;
+        TextView tvTaskTitle, tvDate, tvDays, tvDescription;
         ProgressBar pbTask;
 
         // Constructor
@@ -79,6 +84,7 @@ public class MyTaskAdapter extends RecyclerView.Adapter<MyTaskAdapter.MyTaskView
             tvDate = itemView.findViewById(R.id.tvDate);
             tvDays = itemView.findViewById(R.id.tvDays);
             pbTask = itemView.findViewById(R.id.pbTask);
+            tvDescription = itemView.findViewById(R.id.tvDescription);
 
             // Muestro el menú contextual
             itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
@@ -93,4 +99,5 @@ public class MyTaskAdapter extends RecyclerView.Adapter<MyTaskAdapter.MyTaskView
             });
         }
     }
+
 }

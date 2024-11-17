@@ -7,5 +7,10 @@
     <color name="grey">#A6BBC2</color>
     <color name="green">#43A047</color>
     <color name="red">#D32F2F</color>
+    <!-- añadir un color de texto para tema claro -->
+    <color name="textColorPrimary">#000000</color>
+    <!-- añadir un color de texto para tema oscuro -->
+    <color name="textColorPrimaryDark">#FFFFFF</color>
+
 
 </resources>

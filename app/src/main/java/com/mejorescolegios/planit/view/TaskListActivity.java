@@ -39,7 +39,9 @@ public class TaskListActivity extends AppCompatActivity {
     private MyTaskAdapter adapter;
     private String uidUser;
     private MenuItem menuItemPrioritary;
+    private MenuItem menuItemCompleted;
     private boolean boolprioritary = false;
+    private boolean boolcompleted = true;
 
     private FirebaseDatabase database;
     private FirebaseAuth auth;
@@ -81,7 +83,8 @@ public class TaskListActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(TaskListActivity.this, getResources().getString(R.string.text_error), Toast.LENGTH_SHORT).show();
+                    //Error en log
+                    Log.e("ERROR", error.getMessage());
                 }
             });
         } else {
@@ -101,8 +104,9 @@ public class TaskListActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         menuItemPrioritary = menu.findItem(R.id.it_prioritary);
+        menuItemCompleted = menu.findItem(R.id.it_completed);
         // Coloco el icono adecuado
-        iconoPrioritarias();
+        iconPrioritary();
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -113,12 +117,64 @@ public class TaskListActivity extends AppCompatActivity {
         if (R.id.it_new == item.getItemId()) {
             Intent intent = new Intent(TaskListActivity.this, NewTaskActivity.class);
             startActivity(intent);
+        } else if (R.id.it_completed == item.getItemId()) {
+            // Al pulsar el botón de menú "Completadas", se muestran solo las tareas no completadas
+            //Conmutamos el valor booleando
+            boolcompleted = !boolcompleted;
+            //Colocamos el icono adecuado
+            iconCompleted();
+            adapter.setBoolCompleted(boolcompleted);
+            // si es true se muestran todas las tareas
+            if (boolcompleted) {
+                myTasksRef.orderByChild("uidUser").equalTo(uidUser).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        myTasks.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            MyTask myTask = dataSnapshot.getValue(MyTask.class);
+                            if (myTask != null) {
+                                myTask.setId(dataSnapshot.getKey());
+                                myTasks.add(myTask);
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Error en log
+                        Log.e("ERROR", error.getMessage());
+                    }
+                });
+            } else {
+                // si es false, solo se muestran las tareas no completadas
+                myTasksRef.orderByChild("uidUser").equalTo(uidUser).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        myTasks.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            MyTask myTask = dataSnapshot.getValue(MyTask.class);
+                            if (myTask != null && myTask.getProgress() < 100) {
+                                myTask.setId(dataSnapshot.getKey());
+                                myTasks.add(myTask);
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Error en log
+                        Log.e("ERROR", error.getMessage());
+                    }
+                });
+            }
         } else if (R.id.it_prioritary == item.getItemId()) {
             // Al pulsar el botón de menú "Prioritarias", se muestran solo las tareas prioritarias
             //Conmutamos el valor booleando
             boolprioritary = !boolprioritary;
             //Colocamos el icono adecuado
-            iconoPrioritarias();
+            iconPrioritary();
             adapter.setBoolPrioritary(boolprioritary);
             // si es true, solo se muestran las tareas prioritarias
             if (boolprioritary) {
@@ -138,7 +194,8 @@ public class TaskListActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(TaskListActivity.this, getResources().getString(R.string.text_error), Toast.LENGTH_SHORT).show();
+                        // Error en log
+                        Log.e("ERROR", error.getMessage());
                     }
                 });
             } else {
@@ -193,16 +250,49 @@ public class TaskListActivity extends AppCompatActivity {
 
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
-        } else if (R.id.it_logout == item.getItemId()){
-            // cerrar sesión
-            auth.signOut();
-            Toast.makeText(TaskListActivity.this, getResources().getString(R.string.text_logout), Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(TaskListActivity.this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); // Convierte a MainActivity en la primera actividad de la pila
-            startActivity(intent);
-            finish(); // Cierra la actividad actual para evitar regresar a ella con el botón de retroceso
-        } else if (R.id.it_exit == item.getItemId()){
-            finishAffinity();
+        } else if (R.id.it_logout == item.getItemId()) {
+            // Crear un AlertDialog para confirmar si se desea cerrar sesión
+            new AlertDialog.Builder(this)
+                    .setMessage(getResources().getString(R.string.confirm_logout))
+                    .setCancelable(false)
+                    .setPositiveButton(getResources().getString(R.string.text_yes), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            // Si el usuario selecciona "Sí", cerrar sesión
+                            auth.signOut();
+                            Toast.makeText(TaskListActivity.this, getResources().getString(R.string.text_logout), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(TaskListActivity.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); // Convierte a MainActivity en la primera actividad de la pila
+                            startActivity(intent);
+                            finish(); // Cierra la actividad actual para evitar regresar a ella con el botón de retroceso
+                        }
+                    })
+                    .setNegativeButton(getResources().getString(R.string.text_no), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss(); // Si el usuario selecciona "No", cerrar el diálogo
+                        }
+                    })
+                    .show();
+        } else if (R.id.it_exit == item.getItemId()) {
+            // Crear un AlertDialog para confirmar si desea salir de la aplicación
+            new AlertDialog.Builder(this)
+                    .setMessage(getResources().getString(R.string.confirm_exit))
+                    .setCancelable(false)
+                    .setPositiveButton(getResources().getString(R.string.text_yes), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            // Si el usuario selecciona "Sí", salir de la aplicación
+                            finishAffinity(); // Cierra todas las actividades y termina la aplicación
+                        }
+                    })
+                    .setNegativeButton(getResources().getString(R.string.text_no), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss(); // Si el usuario selecciona "No", cerrar el diálogo
+                        }
+                    })
+                    .show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -237,12 +327,20 @@ public class TaskListActivity extends AppCompatActivity {
     }
 
     //Método para cambiar el icono de acción para mostrar todas las tareas o solo prioritarias
-    private void iconoPrioritarias(){
+    private void iconPrioritary(){
         if(boolprioritary)
             //Ponemos en la barra de herramientas el icono PRIORITARIAS
             menuItemPrioritary.setIcon(android.R.drawable.btn_star_big_on);
         else
             //Ponemos en la barra de herramientas el icono NO PRIORITARIAS
             menuItemPrioritary.setIcon(android.R.drawable.btn_star_big_off);
+    }
+
+    //Método para cambiar el icono de acción para mostrar todas las tareas o solo completadas
+    private void iconCompleted(){
+        if(boolcompleted)
+            menuItemCompleted.setIcon(android.R.drawable.checkbox_on_background);
+        else
+            menuItemCompleted.setIcon(android.R.drawable.checkbox_off_background);
     }
 }

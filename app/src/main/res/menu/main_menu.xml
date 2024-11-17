@@ -19,6 +19,13 @@
             android:orderInCategory="120"
             android:title="@string/it_prioritary"
             app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/it_completed"
+            android:contentDescription="@string/desc_it_completed"
+            android:icon="@android:drawable/checkbox_on_background"
+            android:orderInCategory="130"
+            android:title="@string/it_completed"
+            app:showAsAction="ifRoom" />
     </group>
     <group
         android:id="@+id/group_main"
