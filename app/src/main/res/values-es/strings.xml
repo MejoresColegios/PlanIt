@@ -48,4 +48,10 @@
     <string name="text_no">No</string>
     <string name="confirm_exit">¿Estás preparado para salir de la app?</string>
     <string name="it_completed">Tarea completada</string>
+    <string name="settings">Ajustes</string>
+    <string name="display_header">Visualización</string>
+    <string name="switch_theme_title">Tema</string>
+    <string name="switch_dark_theme">Oscuro</string>
+    <string name="switch_light_theme">Claro</string>
+    <string name="title_activity_settings">Ajustes</string>
 </resources>

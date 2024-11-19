@@ -5,7 +5,6 @@
     android:id="@+id/signUp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ic_launcher_background"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".view.SignUpActivity">
@@ -54,8 +53,6 @@
                 android:hint="@string/full_name"
                 android:inputType="text"
                 android:padding="8dp"
-                android:textColor="@color/black"
-                android:textColorHint="#757575"
                 tools:ignore="DuplicateIds,HardcodedText,VisualLintTextFieldSize" />
 
             <EditText
@@ -68,8 +65,6 @@
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
-                android:textColor="@color/black"
-                android:textColorHint="#757575"
                 tools:ignore="DuplicateIds,HardcodedText,VisualLintTextFieldSize" />
 
             <EditText
@@ -81,8 +76,6 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColor="@color/black"
-                android:textColorHint="#757575"
                 tools:ignore="Autofill,VisualLintTextFieldSize" />
 
             <Button

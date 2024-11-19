@@ -1,6 +1,7 @@
 package com.mejorescolegios.planit.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -27,6 +29,8 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
+    private SharedPreferences sharedPreferences;
+
     private FirebaseAnalytics mFirebaseAnalytics;
     private ImageButton ibMail, ibSignInWithGoogle;
     private TextView tvMail, tvSignInGoogle, tvSignUp;
@@ -39,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
         // Instancia de Firebase Analytics
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         // Quitar la action bar
