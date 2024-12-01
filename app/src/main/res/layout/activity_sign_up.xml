@@ -24,7 +24,7 @@
         android:fontFamily="sans-serif-medium"
         android:text="@string/sign_up"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/green"
         android:textSize="40sp"
         tools:text="@string/sign_up" />
 
