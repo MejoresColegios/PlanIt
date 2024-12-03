@@ -48,4 +48,6 @@
     <string name="text_no">No</string>
     <string name="confirm_exit">¿Estás preparado para salir de la app?</string>
     <string name="it_completed">Tarea completada</string>
+    <string name="confirm_delete_title">Borrar tarea</string>
+    <string name="confirm_delete_message">¿Seguro que quieres borrar la tarea? Mira que no hay vuelta atrás.</string>
 </resources>

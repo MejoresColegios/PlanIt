@@ -52,10 +52,8 @@
     <string name="text_yes">Yes</string>
     <string name="text_no">No</string>
     <string name="confirm_exit">Do you really want to quit?</string>
-
-
-
-
+    <string name="confirm_delete_title">Delete task</string>
+    <string name="confirm_delete_message">Are you sure you want to delete this task? This action cannot be undone.</string>
 
 
 </resources>

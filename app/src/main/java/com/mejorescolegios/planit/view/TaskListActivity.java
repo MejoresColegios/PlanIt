@@ -308,20 +308,31 @@ public class TaskListActivity extends AppCompatActivity {
             startActivity(intent);
 
         } else if (itemId == R.id.cmDelete) {
-            // Eliminar el contacto seleccionado de la base de datos
+            // Obtener la tarea seleccionada
             MyTask myTask = adapter.getSelectedMyTask();
             if (myTask != null && myTask.getId() != null) {
-                myTasksRef.child(myTask.getId()).removeValue().addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(TaskListActivity.this, R.string.deleted_task, Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(TaskListActivity.this, R.string.error_deleting_task, Toast.LENGTH_SHORT).show();
-                    }
-                });
+                // Crear y mostrar un AlertDialog para confirmar la eliminación
+                new AlertDialog.Builder(TaskListActivity.this)
+                        .setTitle(R.string.confirm_delete_title)
+                        .setMessage(R.string.confirm_delete_message)
+                        .setPositiveButton(R.string.delete, (dialog, which) -> {
+                            // Eliminar la tarea si el usuario confirma
+                            myTasksRef.child(myTask.getId()).removeValue().addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(TaskListActivity.this, R.string.deleted_task, Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(TaskListActivity.this, R.string.error_deleting_task, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        })
+                        .setNegativeButton(R.string.cancel, (dialog, which) -> {
+                            // Cerrar el diálogo si el usuario cancela
+                            dialog.dismiss();
+                        })
+                        .show();
             } else {
                 Toast.makeText(TaskListActivity.this, R.string.invalid_task, Toast.LENGTH_SHORT).show();
             }
-
         }
         return super.onContextItemSelected(item);
     }
